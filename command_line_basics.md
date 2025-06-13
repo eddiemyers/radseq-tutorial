@@ -15,6 +15,7 @@ Learning the command line is essential in reproducible bioinformatics. Even a sm
 pwd            # Show current directory (print working directory)
 ls             # List files and folders
 ls -l          # Long listing format
+ls -ltr        # List in order from most recent to oldest
 cd folder/     # Change directory into "folder"
 cd ..          # Go up one directory
 cd ~/          # Go to your home directory
@@ -22,7 +23,7 @@ mkdir newdir   # Make a new directory
 rm file.txt    # Remove a file
 rm -r folder/  # Remove a folder and its contents
 cp file1 file2 # Copy a file
-mv old/ new/     # Rename or move a file
+mv olddir/ newdir/     # Rename or move a file
 ```
 
 ## Working with Files
@@ -30,9 +31,9 @@ mv old/ new/     # Rename or move a file
 ```bash
 cat file.txt           # View entire file contents
 less file.txt          # Scroll through long files (q to quit)
-head file.txt          # Show first 10 lines
-tail file.txt          # Show last 10 lines
-tail -f log.txt        # Continuously follow updates to a file (great for logs)
+head file.txt -10          # Show first 10 lines
+tail file.txt -10          # Show last 10 lines
+tail -f log.txt        # Continuously follow updates to a file as it saves (great for logs)
 wc -l file.txt         # Count lines in a file
 ```
 
