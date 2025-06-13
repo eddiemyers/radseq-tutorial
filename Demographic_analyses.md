@@ -73,18 +73,18 @@ Run GADMA
 gadma --sfs output_sfs/pop1-pop2.sfs --pop_names pop1 pop2
 ```
 What GADMA Does:
-GADMA fits demographic models (split, migration, bottlenecks) to your SFS.
+-GADMA fits demographic models (split, migration, bottlenecks) to your SFS.
 
-It uses genetic algorithms to search model space, then refines using optimization (e.g., moments or dadi).
+-It uses genetic algorithms to search model space, then refines using optimization (e.g., moments or dadi).
 
-The result is an inferred demographic history with likelihood scores and parameter estimates.
+-The result is an inferred demographic history with likelihood scores and parameter estimates.
 
 Output Interpretation:
-Model plots showing population size changes and divergence times
+-Model plots showing population size changes and divergence times
 
-Parameter estimates (e.g., Ne, migration rates, split time)
+-Parameter estimates (e.g., Ne, migration rates, split time)
 
-Log-likelihood scores for model comparisons
+-Log-likelihood scores for model comparisons
 
 GADMA will save these in its output directory and optionally generate visual plots of demographic histories.
 
