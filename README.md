@@ -13,7 +13,6 @@ Download and install **Miniconda** (recommended over full Anaconda):
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 ```
----
 
 ## 2. Create and Activate a Conda Environment for ipyrad
 ```bash
@@ -26,3 +25,16 @@ conda activate ipyrad_env
 conda install -c bioconda -c conda-forge ipyrad
 ```
 
+## 4. Running ipyrad
+Initialize params file:
+```bash
+ipyrad -n myproject
+```
+Edit the params-myproject.txt file with your sample information and specific settings.
+```bash
+vi params-myproject.txt
+```
+Run assembly (setting number of cores reasonsibly):
+```bash
+ipyrad -p params-myproject.txt -s 1234567 -c 8
+```
