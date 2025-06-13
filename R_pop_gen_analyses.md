@@ -1,4 +1,4 @@
-# 🧬 R-Based Population Genetic Analyses from VCF
+# R-Based Population Genetic Analyses from VCF
 
 This page describes downstream population genetic analyses performed using the VCF file produced by ipyrad. All analyses were done in R using packages like `adegenet`, `LEA`, and `ggplot2`.
 
