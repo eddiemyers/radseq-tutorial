@@ -2,6 +2,11 @@
 
 This quick-start guide covers essential command-line tools used throughout this project. It assumes you're working on a Unix-based system (Linux or macOS) or using a terminal in a conda environment.
 
+Learning the command line is essential in reproducible bioinformatics. Even a small toolbox of commands helps you:
+- Handle large datasets
+- Automate workflows
+- Debug efficiently
+
 ---
 
 ##  File System Navigation
@@ -50,7 +55,13 @@ chmod +x script.sh        # Make a script executable
 ./script.sh               # Run a script in the current directory
 ```
 
-##
+## A Very Basic Guide to vi
+
+```bash
+vi filename.txt
+```
+Basic commands inside vi:
+- If you're lost in vi, hit Esc and type :q! to quit without saving.
 
 | Mode         | Command     | What it does                  |
 | ------------ | ----------- | ----------------------------- |
@@ -58,5 +69,12 @@ chmod +x script.sh        # Make a script executable
 | Insert mode  | Press `Esc` | Return to command mode        |
 | Command mode | `:w`        | Save the file                 |
 | Command mode | `:q`        | Quit                          |
-| Command mode | `:wq`       | Save and quit                 |
+| Command mode | `:x`       | Save and quit                 |
 | Command mode | `:q!`       | Quit without saving           |
+
+## Combine Commands
+
+Use pipes (|) to combine tools. For example, the below will print the number of sites in your vcf file.
+```bash
+grep -v "^#" your_data.vcf | wc -l
+```
