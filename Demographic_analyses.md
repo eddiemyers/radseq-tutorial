@@ -14,8 +14,8 @@ GADMA is a Python-based tool for inferring demographic history using allele freq
 conda create -n gadma_env python=3.10 -y
 conda activate gadma_env
 
-# Install GADMA
-pip install gadma
+# Install GADMA using conda
+conda install bioconda::gadma
 ```
 
 ## Step 2: Prepare the VCF and Population Map
