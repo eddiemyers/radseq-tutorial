@@ -7,7 +7,15 @@ This page describes downstream population genetic analyses performed using the V
 ##  1. Load VCF and Prepare Data
 
 ```r
-# Required libraries
+# Install all libraries
+install.packages(c("adegenet", "vcfR", "tidyverse", "vegan", "ggplot2", "geosphere"))
+# The package LEA needs to be installed using Bioconductor (it's not on CRAN)
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("LEA")
+
+# Load required libraries
 library(adegenet)
 library(vcfR)
 library(LEA)
