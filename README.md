@@ -13,6 +13,8 @@ Download and install **Miniconda** (recommended over full Anaconda):
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 
+---
+
 ## 2. Create and Activate a Conda Environment for ipyrad
 
 conda create -n ipyrad_env python=3.9
