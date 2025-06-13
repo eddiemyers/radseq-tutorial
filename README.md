@@ -18,4 +18,11 @@ bash Miniconda3-latest-Linux-x86_64.sh
 ## 2. Create and Activate a Conda Environment for ipyrad
 ```bash
 conda create -n ipyrad_env python=3.9
-conda activate ipyrad_env```
+conda activate ipyrad_env
+```
+
+## 3. Install ipyrad
+```bash
+conda install -c bioconda -c conda-forge ipyrad
+```
+
