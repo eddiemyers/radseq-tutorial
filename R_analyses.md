@@ -4,7 +4,7 @@ This page describes downstream population genetic analyses performed using the V
 
 ---
 
-## 📥 1. Load VCF and Prepare Data
+##  1. Load VCF and Prepare Data
 
 ```r
 # Required libraries
@@ -17,8 +17,84 @@ library(ggplot2)
 library(geosphere)
 
 # Load VCF
+# SNP thinning may be necessary for SNMF and IBD if you have high linkage.
 vcf <- read.vcfR("your_data.vcf")
 
 # Convert to genlight
+# Ensure your metadata.csv contains sample IDs in the same order as the VCF file.
 gl <- vcfR2genlight(vcf)
 pop(gl) <- read.csv("metadata.csv")$population  # Optional: assign population labels
+```
+
+## 2. Discriminant Analysis of Principal Components (DAPC)
+
+```r
+# Identify clusters using find.clusters
+grp <- find.clusters(gl, max.n.clust = 10)  # Choose based on BIC plot
+
+# Run DAPC
+dapc_result <- dapc(gl, pop = grp$grp)
+scatter(dapc_result)
+
+# Scree plot to decide number of PCs
+plot(dapc_result$eig, type = "b", main = "DAPC eigenvalues")
+```
+
+## 3. SNMF and Ancestry Proportions on a Map
+
+```r
+# Convert to LEA format
+write.geno(gl, "gl_data.geno")
+
+# Run SNMF
+project <- snmf("gl_data.geno", K = 1:6, repetitions = 5, entropy = TRUE)
+plot(project, col = "blue", pch = 19)
+
+# Choose best K (lowest cross-entropy)
+best_run <- which.min(cross.entropy(project, K = 3))  # example with K=3
+qmatrix <- Q(project, K = 3, run = best_run)
+
+# Merge qmatrix with coordinates
+coords <- read.csv("metadata.csv")  # must include lat/lon
+q_df <- cbind(coords, qmatrix)
+
+# Plot pie charts on a map
+install.packages("ggforce")
+library(ggforce)
+
+ggplot() +
+  borders("world", colour = "gray80") +
+  geom_scatterpie(data = q_df, aes(x = longitude, y = latitude), 
+                  cols = paste0("V", 1:3), pie_scale = 0.5) +
+  coord_fixed() +
+  theme_minimal()
+```
+
+## 4. Isolation by Distance (IBD) – Mantel Test
+
+```r
+# Create distance matrices
+gen_dist <- dist(tab(gl, NA.method = "mean"))
+geo_dist <- distm(coords[, c("longitude", "latitude")]) / 1000  # in km
+
+# Mantel test
+mantel_result <- mantel(gen_dist, as.dist(geo_dist), method = "pearson")
+print(mantel_result)
+
+# Plot IBD
+plot(as.vector(geo_dist), as.vector(gen_dist),
+     xlab = "Geographic Distance (km)",
+     ylab = "Genetic Distance",
+     main = "Isolation by Distance")
+abline(lm(as.vector(gen_dist) ~ as.vector(geo_dist)), col = "red")
+```
+
+## 5. Hierarchical Clustering of Samples
+
+```r
+# Perform hierarchical clustering
+hc <- hclust(gen_dist, method = "ward.D2")
+
+# Plot dendrogram
+plot(hc, labels = FALSE, hang = -1, main = "Hierarchical Clustering of Samples")
+```
