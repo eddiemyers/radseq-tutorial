@@ -34,7 +34,7 @@ Edit the params-myproject.txt file with your sample information and specific set
 ```bash
 vi params-myproject.txt
 ```
-Run assembly (setting number of cores reasonsibly):
+Run assembly (setting number of cores sensibly):
 ```bash
 ipyrad -p params-myproject.txt -s 1234567 -c 8
 ```
