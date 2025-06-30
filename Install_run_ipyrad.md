@@ -1,6 +1,6 @@
-# RADseq Data Workflow for Population Genomics
+# RADseq Data Assembly using ipyrad
 
-This guide walks you through installing the tools, running `ipyrad` for RADseq assembly, and performing downstream population structure analyses in R.
+This guide walks you through installing and running `ipyrad` for RADseq assembly.
 
 ---
 
