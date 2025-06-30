@@ -71,7 +71,13 @@ p, s, l                        ## [27] [output_formats]: Output formats (see doc
 There's a lot of details about this params file here: https://ipyrad.readthedocs.io/en/master/tutorial_intro_cli.html#create-an-ipyrad-params-file. For now we will focus on editing the 'sorted_fastq_path', 'barcodes_path', 'reference_sequence', and 'assembly_method'. All of these parameters can influence the final output files, and we might want to consider the minimum number of samples to call a SNP and the output formats we want now.
 
 
-Run assembly (setting number of cores sensibly):
+If we're happy about the params file we can go ahead and run the assembly (setting number of cores sensibly):
 ```bash
 ipyrad -p params-myproject.txt -s 1234567 -c 8
+```
+Note that the HPC at the Academy ins't using a job scheduler, so in order to exit the terminal without killing the job we need to do the following:
+```bash
+Control + z
+bg
+disown
 ```
