@@ -68,6 +68,8 @@ p, s, l                        ## [27] [output_formats]: Output formats (see doc
                                ## [28] [pop_assign_file]: Path to population assignment file
                                ## [29] [reference_as_filter]: Reads mapped to this reference are removed in step 3
 ```
+There's a lot of details about this params file here: https://ipyrad.readthedocs.io/en/master/tutorial_intro_cli.html#create-an-ipyrad-params-file. For now we will focus on editing the 'sorted_fastq_path', 'barcodes_path', 'reference_sequence', and 'assembly_method'. All of these parameters can influence the final output files, and we might want to consider the minimum number of samples to call a SNP and the output formats we want now.
+
 
 Run assembly (setting number of cores sensibly):
 ```bash
