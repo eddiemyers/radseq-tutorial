@@ -31,8 +31,8 @@ mv olddir/ newdir/     # Rename or move a file
 ```bash
 cat file.txt           # View entire file contents
 less file.txt          # Scroll through long files (q to quit)
-head file.txt -10          # Show first 10 lines
-tail file.txt -10          # Show last 10 lines
+head -10 file.txt           # Show first 10 lines
+tail -10 file.txt          # Show last 10 lines
 tail -f log.txt        # Continuously follow updates to a file as it saves (great for logs)
 wc -l file.txt         # Count lines in a file
 ```
