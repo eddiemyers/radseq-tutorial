@@ -45,6 +45,7 @@ grep -i "pattern" file.txt  # Case-insensitive search
 sort file.txt               # Sort lines alphabetically
 uniq file.txt               # Remove duplicates (usually after sort)
 cut -f1,3 file.tsv          # Extract columns 1 and 3 from tab-delimited file
+cut -d',' -f1,3 file.csv    # For comma delimited files
 awk '{print $1, $3}' file   # Print specific fields (flexible alternative to cut)
 ```
 
