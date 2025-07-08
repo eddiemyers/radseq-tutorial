@@ -44,8 +44,6 @@ grp <- find.clusters(gl, max.n.clust = 10)  # Choose based on BIC plot
 dapc_result <- dapc(gl, pop = grp$grp)
 scatter(dapc_result)
 
-# Scree plot to decide number of PCs
-plot(dapc_result$eig, type = "b", main = "DAPC eigenvalues")
 ```
 
 ## 3. SNMF and Ancestry Proportions on a Map
@@ -89,12 +87,15 @@ geo_dist <- distm(coords[, c("longitude", "latitude")]) / 1000  # in km
 mantel_result <- mantel(gen_dist, as.dist(geo_dist), method = "pearson")
 print(mantel_result)
 
-# Plot IBD
-plot(as.vector(geo_dist), as.vector(gen_dist),
+# Convert geographic distance matrix to half matrix
+geo_dist_dist <- as.dist(geo_dist)
+
+# Plot IBD. 
+plot(as.vector(geo_dist_dist), as.vector(gen_dist),
      xlab = "Geographic Distance (km)",
      ylab = "Genetic Distance",
      main = "Isolation by Distance")
-abline(lm(as.vector(gen_dist) ~ as.vector(geo_dist)), col = "red")
+abline(lm(as.vector(gen_dist) ~ as.vector(geo_dist_dist)), col = "red")
 ```
 
 ## 5. Hierarchical Clustering of Samples
