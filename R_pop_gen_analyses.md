@@ -74,6 +74,15 @@ ggplot() +
                   cols = paste0("V", 1:3), pie_scale = 0.5) +
   coord_fixed() +
   theme_minimal()
+
+# ahh... maybe we can do better
+ggplot() +
+  borders("world", colour = "gray80", fill = "gray95") +
+  geom_scatterpie(data = q_df, aes(x = Longitude, y = Latitude), 
+                  cols = paste0("V", 1:2), pie_scale = 1.0) +
+  coord_sf(xlim = c(-78.5, -76), ylim = c(17.5, 18.6), expand = FALSE) +
+  theme_minimal()
+
 ```
 
 ## 4. Isolation by Distance (IBD) – Mantel Test
