@@ -113,6 +113,9 @@ abline(lm(as.vector(gen_dist) ~ as.vector(geo_dist_dist)), col = "red")
 # Perform hierarchical clustering
 hc <- hclust(gen_dist, method = "ward.D2")
 
-# Plot dendrogram
-plot(hc, labels = FALSE, hang = -1, main = "Hierarchical Clustering of Samples")
+# Extract sample names (these are usually the row names of the input to dist())
+labels <- attr(gen_dist, "Labels")
+
+# Plot dendrogram with labels
+plot(hc, labels = labels, hang = -1, main = "Hierarchical Clustering of Samples")
 ```
