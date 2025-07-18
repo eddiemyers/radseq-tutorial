@@ -53,7 +53,7 @@ scatter(dapc_result)
 snp_data = vcf2geno("myproject.vcf", force=TRUE)
 
 # Run SNMF
-project <- snmf("gl_data.geno", K = 1:6, repetitions = 5, entropy = TRUE)
+project <- snmf(snp_data, K = 1:6, repetitions = 5, entropy = TRUE)
 plot(project, col = "blue", pch = 19)
 
 # Choose best K (lowest cross-entropy)
