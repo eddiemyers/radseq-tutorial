@@ -66,7 +66,9 @@ q_df <- cbind(coords, qmatrix)
 
 # Plot pie charts on a map
 install.packages("ggforce")
+install.packages("scatterpie")
 library(ggforce)
+library(scatterpie)
 
 ggplot() +
   borders("world", colour = "gray80") +
