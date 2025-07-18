@@ -50,7 +50,7 @@ scatter(dapc_result)
 
 ```r
 # Convert to LEA format
-write.geno(gl, "gl_data.geno")
+snp_data = vcf2geno("myproject.vcf", force=TRUE)
 
 # Run SNMF
 project <- snmf("gl_data.geno", K = 1:6, repetitions = 5, entropy = TRUE)
